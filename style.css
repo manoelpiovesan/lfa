@@ -1,0 +1,75 @@
+.estados{
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+.estado{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: grey;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.atual{
+    background-color: green;
+    border: 0.3rem solid greenyellow;
+}
+
+#pilha{
+    margin-top: 4rem;
+    width: 20%;
+    background-color: darkgray;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-right: 0.3rem solid black;
+    border-left: 0.3rem solid black;
+    border-bottom: 0.3rem solid black;
+    /* border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem; */
+}
+
+.pilha-item{
+    width: 100%;
+    height: 3rem;
+    background-color: grey;
+    border-top: 0.1rem solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.final{
+    width: 4rem;
+    height: 4rem;
+    border: 0.2rem solid #303030;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next{
+    width: 3rem;
+}
+
+.pilha-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+.return{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
