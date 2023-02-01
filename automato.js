@@ -8,7 +8,7 @@ function addPilha(){
     var $pilha = document.querySelector('#pilha')
     var $pilhaItem = document.createElement('div')
         $pilhaItem.className = 'pilha-item'
-        $pilhaItem.textContent = 'A'
+        $pilhaItem.innerHTML = '<span>A</span>'
         $pilha.appendChild($pilhaItem)
 }
 
@@ -37,9 +37,9 @@ function andarFita(index){
 
 function addLog(inicial, final, lido){
   if(inicial != final){
-    document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: ${lido} | Mudança de estado: ${inicial} -> ${final}.</p>`;
+    document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: ${lido} | Mudança de estado: q${inicial}  → q${final}.</p>`;
   }else{
-    document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: ${lido} | Sem mudança, permanecendo em ${inicial}.</p>`;
+    document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: ${lido} | Sem mudança, permanecendo em q${inicial}.</p>`;
   }
   logCount++;
 }
@@ -72,8 +72,8 @@ async function AutomatoPilha(input) {
     construirFita(input)
 
     while (index < input.length) {
-      let char = input[index];
-
+      let char = input[index].toLowerCase();
+      
       if(index != 0){
         andarFita(index)
       }
@@ -86,7 +86,7 @@ async function AutomatoPilha(input) {
         addPilha()
         pularEstado(0, 1)
         addLog(0,1,'A')
-        document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: A | Adicionando 'A' na pilha.</p>`;
+        document.querySelector('#log').innerHTML += `<p>${logCount}. Empilhando 'A'.</p>`;
         logCount++;
         
         index++;
@@ -99,7 +99,7 @@ async function AutomatoPilha(input) {
         addPilha()
         pularEstado(1, 1)
         addLog(1,1,'A')
-        document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: A | Adicionando 'A' na pilha.</p>`;
+        document.querySelector('#log').innerHTML += `<p>${logCount}. Empilhando 'A'.</p>`;
         logCount++;
         index++;
 
@@ -109,7 +109,7 @@ async function AutomatoPilha(input) {
         await piscarTransicao(1, 2)
         pularEstado(1, 2)
         addLog(1,2,'B')
-        document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: B | Removendo A da pilha.</p>`;
+        document.querySelector('#log').innerHTML += `<p>${logCount}. Desempilhando A.</p>`;
         logCount++;
 
         document.getElementsByClassName('pilha-item')[0].remove()
@@ -124,14 +124,15 @@ async function AutomatoPilha(input) {
 
         if (pilha.length === 0) {
 
-          document.querySelector('#result').textContent = 'Não aceita!'
+          document.querySelector('#fita').innerHTML= '<div class="fita-naoaceita-msg">Linguagem não aceita!</div>'
+          document.querySelector('#log').innerHTML += `<p class='naoaceita'>${logCount}. Linguagem: ${input} não aceita!`;
           return false;
 
         } else {
 
           pilha.pop();
           
-          document.querySelector('#log').innerHTML += `<p>${logCount}. Lendo: B | Removendo A da pilha.</p>`;
+          document.querySelector('#log').innerHTML += `<p>${logCount}. Desempilhando A.</p>`;
           document.getElementsByClassName('pilha-item')[0].remove()
           
           logCount++;
@@ -139,15 +140,17 @@ async function AutomatoPilha(input) {
         }
       } else {
         
-        document.querySelector('#log').innerHTML += `<p class='text-danger'>${logCount}. Linguagem: ${input} não aceita!`;
+        document.querySelector('#fita').innerHTML= '<div class="fita-naoaceita-msg">Linguagem não aceita!</div>'
+        document.querySelector('#log').innerHTML += `<p class='naoaceita'>${logCount}. Linguagem: ${input} não aceita!`;
         logCount++;
         return false;
         
       }
       await sleep(2000);
     }
-
-    document.querySelector('#log').innerHTML += `<p class='text-success aceita'>${logCount}. Linguagem: ${input} aceita!`;
+    
+    document.querySelector('#fita').innerHTML= '<span class="fita-aceita-msg">Linguagem aceita!</span>'
+    document.querySelector('#log').innerHTML += `<p class='aceita'>${logCount}. Linguagem: ${input} aceita!`;
     logCount++;
     return pilha.length === 0;
     
