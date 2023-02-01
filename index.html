@@ -15,30 +15,40 @@
             <div class="card-body">
                 <div class="text-center">
                     <h3>L= {a^n b^n | n>=0}</h3>
-                    <input id="input-string" type="text" class="form-control">
-                    <p></p>
-                    <button id='recognize-btn' class="btn btn-secondary">Reconhecer</button>
+                    <div class="btn-group">
+                        <input id="input-string" type="text" class="form-control">
+                        <button id='recognize-btn' class="btn btn-secondary">Reconhecer</button>
+                    </div>
+                </div>
+                <div id="fita">
+                    <!-- <div class="fita-char">A</div>
+                    <div class="fita-char">A</div>
+                    <div class="fita-char">A</div>
+                    <div class="fita-char">B</div>
+                    <div class="fita-char">B</div>
+                    <div class="fita-char lida">B</div> -->
+
                 </div>
                 <div class="estados">
                     <div class='estado atual' id="q0">q0</div>
                     <div class="d-flex flex-column align-items-center">
                         a
-                        <img src="/next.svg" class="next" alt="">
+                        <img id='q0q1' src="/next.svg" class="next" alt="">
                     </div>
                     <div class="return">
                         <div class="d-flex">
-                            <img src="/return.svg" class="next" alt="">
+                            <img id='q1q1' src="/return.svg" class="return-inside" alt="">
                             a
                         </div>
                         <div class='estado' id="q1">q1</div>
                     </div>
                     <div class="d-flex flex-column align-items-center">
                         b
-                        <img src="/next.svg" class="next" alt="">
+                        <img id='q1q2' src="/next.svg" class="next" alt="">
                     </div>
                     <div class="return">
                         <div class="d-flex">
-                            <img src="/return.svg" class="next" alt="">
+                            <img id='q2q2' src="/return.svg" class="return-inside" alt="">
                             b
                         </div>
                         <div class='estado' id="q2"><div class="final">q2</div></div>
@@ -46,9 +56,11 @@
                 </div>
                 <div class="pilha-box">
                     <div id="pilha">
-                        <!-- <div class="pilha-item">A</div>
-                        <div class="pilha-item">A</div>
-                        <div class="pilha-item">A</div> -->
+                        
+                    </div>
+                    <div id="log">
+                        
+
                     </div>
                 </div>
                 <div id="result">
