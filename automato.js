@@ -12,6 +12,13 @@ function addPilha(){
         $pilha.appendChild($pilhaItem)
 }
 
+async function removePilha(){
+
+  let item = document.getElementsByClassName('pilha-item')[0]
+  item.classList.add('fade-out');
+  item.remove();
+}
+
 function pularEstado(inicial, destino){
     
     document.getElementById(`q${inicial}`).classList.remove('atual')
@@ -45,10 +52,15 @@ function addLog(inicial, final, lido){
 }
 
 async function piscarTransicao(inicial, final){
-  document.getElementById(`q${inicial}q${final}`).classList.add('transicao-atual')
-  console.log('transicao',`q${inicial}q${final}`)
-  await sleep(1000)
-  document.getElementById(`q${inicial}q${final}`).classList.remove('transicao-atual')
+  if(inicial == final){
+    document.getElementById(`q${inicial}q${final}`).src = '/return02.png'
+    await sleep(1000)
+    document.getElementById(`q${inicial}q${final}`).src = '/return01.png'
+  }else{
+    document.getElementById(`q${inicial}q${final}`).src = '/next02.png'
+    await sleep(1000)
+    document.getElementById(`q${inicial}q${final}`).src = '/next01.png'
+  }
 }
 
 function Limpar(){
@@ -112,7 +124,7 @@ async function AutomatoPilha(input) {
         document.querySelector('#log').innerHTML += `<p>${logCount}. Desempilhando A.</p>`;
         logCount++;
 
-        document.getElementsByClassName('pilha-item')[0].remove()
+        await removePilha()
 
         index++;
 
@@ -133,7 +145,7 @@ async function AutomatoPilha(input) {
           pilha.pop();
           
           document.querySelector('#log').innerHTML += `<p>${logCount}. Desempilhando A.</p>`;
-          document.getElementsByClassName('pilha-item')[0].remove()
+          await removePilha()
           
           logCount++;
           index++;
