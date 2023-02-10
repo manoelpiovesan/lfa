@@ -4,6 +4,7 @@
     align-items: end;
     justify-content: space-evenly;
     margin-top: 3rem;
+    flex-direction: column;
 }
 .estado{
     width: 5rem;
@@ -333,7 +334,7 @@ background: linear-gradient(90deg, rgba(102,182,0,1) 0%, rgba(142,255,0,1) 49%, 
 }
 
 html,body{
-    background-color: #000000;
+    background-color: #cdcdcd;
 }
 
 
@@ -343,10 +344,22 @@ html,body{
     border: 0.1rem solid rgb(73, 0, 0);
 }
 
-.btn-group{
+.btn-group, .form-select{
     width: 90%;
     
 }
+
+.invisible{
+    display: none;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 
 .btn-group input{
     border-radius: 0;
@@ -354,7 +367,7 @@ html,body{
 
     -webkit-box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
     -moz-box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
-    box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
+    box-shadow: 0px 7px 0px 0px #505050;
 
     border-top: 0.3rem solid #404040;
     border-bottom: 0.3rem solid #404040;
@@ -370,7 +383,7 @@ html,body{
 
     -webkit-box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
     -moz-box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
-    box-shadow: 0px 7px 0px 0px #505050, inset 0px 0px 7px 0px rgba(0,0,0,0.23);
+    box-shadow: 0px 7px 0px 0px #505050;
 
     border-top: 0.3rem solid #404040;
     border-bottom: 0.3rem solid #404040;
@@ -411,4 +424,16 @@ html,body{
     height: 3rem;
     font-size: 1.5rem;
     color: #707070;
+}
+
+.automato-display{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-select{
+    margin-top: 2rem;
 }
